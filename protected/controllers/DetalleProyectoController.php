@@ -1,5 +1,4 @@
 <?php
-
 class DetalleProyectoController extends Controller
 {
 	/**
@@ -214,6 +213,11 @@ class DetalleProyectoController extends Controller
 		if(isset($_GET["estatus"])){
 			$model = $this->loadModel($id);
 			$model->estatus_did = $_GET["estatus"];
+			if($_GET["estatus"]== 2){
+				$model->fechaFinalizado = date('Y-m-d H:i:s');
+			}elseif($_GET["estatus"]== 1){
+				$model->fechaFinalizado = NULL;
+			}
 			if($model->save()){				
 				if($model->estatus_did == 1){
 					Yii::app()->user->setFlash("warning","No se ha realizado la actividad: " . $model->nombre . " del Proyecto " . $model->proyecto->nombre);
@@ -234,6 +238,7 @@ class DetalleProyectoController extends Controller
 					if($actividadesTotales == $actividadesRealizadas){
 						$proyecto = Proyecto::model()->find("id = " . $model->proyecto_did);
 						$proyecto->estatus_did = 2;
+						print_r($proyecto);exit;
 						if($proyecto->save()){
 							Yii::app()->user->setFlash("info","Se completó el proyecto: " . $proyecto->nombre);
 							Yii::app()->db->createCommand("insert into Actividad (mensaje, usuario) Values ('Se completó el proyecto: " . $proyecto->nombre ."', '" . Yii::app()->user->name ."')")->execute();

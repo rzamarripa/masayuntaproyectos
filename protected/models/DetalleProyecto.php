@@ -41,14 +41,14 @@ class DetalleProyecto extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, descripcion, costo, peso, estatus_did', 'required'),
+			array('nombre, fechaInicio_ft, fechaFin_ft, descripcion, costo, peso, estatus_did', 'required'),
 			array('peso', 'numerical', 'integerOnly'=>true),
 			array('costo', 'numerical'),
 			array('nombre', 'length', 'max'=>100),
 			array('proyecto_did, estatus_did, responsable_did', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, nombre, proyecto_did, peso, estatus_did,responsable_did', 'safe', 'on'=>'search'),
+			array('id, nombre, fechaInicio_ft, fechaFin_ft, fechaFinalizado, proyecto_did, peso, estatus_did, responsable_did', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,12 +74,15 @@ class DetalleProyecto extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'nombre' => 'Nombre',
+			'fechaInicio_ft' => 'Fecha de Inicio',
+			'fechaFin_ft' => 'Fecha de Fin',
 			'proyecto_did' => 'Proyecto',
 			'peso' => 'Peso',
 			'estatus_did' => 'Estatus',
 			'responsable_did' => 'Responsable',
 			'descripcion' => 'Descripcion',
 			'costo' => 'Costo',
+			'fechaFinalizado' => 'Fecha Finalizado',
 		);
 	}
 
@@ -96,12 +99,15 @@ class DetalleProyecto extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('nombre',$this->nombre,true);
+		$criteria->compare('fechaInicio_ft',$this->fechaInicio_ft,true);
+		$criteria->compare('fechaFin_ft',$this->fechaFin_ft,true);
 		$criteria->compare('proyecto_did',$this->proyecto_did,true);
 		$criteria->compare('peso',$this->peso);
 		$criteria->compare('estatus_did',$this->estatus_did,true);
 		$criteria->compare('responsable_did',$this->responsable_did,true);
 		$criteria->compare('descripcion',$this->descripcion,true);
 		$criteria->compare('costo',$this->costo);
+		$criteria->compare('fechaFinalizado',$this->fechaFinalizado,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

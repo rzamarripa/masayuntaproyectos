@@ -32,7 +32,7 @@ class ProyectoController extends Controller
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('index','view','create','update',
-													'admin','delete', 'cambiar','usuario','subir','upload','otros','passa'),
+													'admin','delete', 'cambiar','usuario','subir','upload','otros','passa','imprimir'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -344,6 +344,19 @@ class ProyectoController extends Controller
 			print_r($e);
 		}
   }
+
+ public function actionImprimir($id)
+	{
+		$proyecto=Proyecto::model()->findByPk($id);
+		$actividades=detalleProyecto::model()->findAll('proyecto_did='.$id);
+		$this->layout="pdf";
+		$mPDF1 = Yii::app()->ePdf->mpdf();
+		$stylesheet = file_get_contents(Yii::getPathOfAlias('webroot.themes.bootstrap.css') . '/print.css');
+		$mPDF1->WriteHTML($stylesheet,1);
+		$mPDF1->AddPage('P');
+		$mPDF1->WriteHTML($this->renderPartial('imprimir', array('proyecto'=> $proyecto,'actividades' => $actividades),true),2);
+		$mPDF1->Output();
+	}
   
   public function actionPassa(){
 	  $this->render("passa");

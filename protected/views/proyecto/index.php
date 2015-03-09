@@ -52,6 +52,7 @@ foreach($proyectos as $proyecto){
 								echo CHtml::link('<i class="fa fa-pencil text-warning"></i>',array('proyecto/update','id'=>$proyecto->id),array('class'=>'button-icon jarviswidget-edit-btn'));
 								echo CHtml::link('<i class="fa fa-plus text-primary"></i>',array('detalleProyecto/create','id'=>$proyecto->id),array('class'=>'button-icon jarviswidget-edit-btn'));
 								echo CHtml::link('<i class="fa fa-user text-primary"></i>',array('detalleProyecto/create','id'=>$proyecto->id, 'ayuda'=>true),array('class'=>'button-icon jarviswidget-edit-btn'));
+								echo CHtml::link('<i class="fa fa-print text-primary"></i>',array('imprimir','id'=>$proyecto->id),array('class'=>'button-icon jarviswidget-edit-btn'));
 								echo ($proyecto->estatus_did == 1) ? "" : 
 										CHtml::link('<i class="fa fa-check text-info"></i>',array('proyecto/cambiar','id'=>$proyecto->id,'estatus'=>1),array('class'=>'button-icon jarviswidget-edit-btn')); 
 							?>				

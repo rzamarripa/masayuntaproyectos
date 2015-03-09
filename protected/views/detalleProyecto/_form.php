@@ -26,6 +26,40 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<?php echo $form->labelEx($model,'fechaInicio_ft',array('class'=>'control-label col-lg-2')); ?>
+		<div class="col-lg-3">
+			<?php
+										Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
+										if ($model->fechaInicio_ft!='') 
+											$model->fechaInicio_ft=date('d-m-Y',strtotime($model->fechaInicio_ft));
+										$this->widget('CJuiDateTimePicker',array(
+											'model'=>$model,
+							                'attribute'=>'fechaInicio_ft',
+							                'mode'=>'datetime',
+							                'language' => 'es',
+							                'options'=>array('dateFormat'=>'yy/mm/dd'),
+							               
+								            ));?>			<?php echo $form->error($model,'fechaInicio_ft'); ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'fechaFin_ft',array('class'=>'control-label col-lg-2')); ?>
+		<div class="col-lg-3">
+			<?php
+										Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
+										if ($model->fechaFin_ft!='') 
+											$model->fechaFin_ft=date('d-m-Y',strtotime($model->fechaFin_ft));
+										$this->widget('CJuiDateTimePicker',array(
+											'model'=>$model,
+							                'attribute'=>'fechaFin_ft',
+							                'mode'=>'datetime',
+							                'language' => 'es',
+							                'options'=>array('dateFormat'=>'yy/mm/dd'),
+							               
+								            ));?>			<?php echo $form->error($model,'fechaFin_ft'); ?>
+		</div>
+	</div>
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'costo',array('class'=>'control-label col-lg-2')); ?>
 		<div class="col-lg-3">
 		<div class="input-group">
@@ -35,7 +69,6 @@
 		</div>
 		</div>
 	</div>
-
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'peso',array('class'=>'control-label col-lg-2')); ?>
 		<div class="col-lg-3">
