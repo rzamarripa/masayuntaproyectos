@@ -44,7 +44,7 @@ class Proyecto extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('descripcion, fechaInicio_ft, fechaFin_ft, responsable_did, estatus_did, tipoFondo_did, costo', 'required'),
+			array('nombre, responsable_did, estatus_did, tipoFondo_did', 'required'),
 			array('nombre', 'length', 'max'=>100),
 			array('costo', 'numerical'),
 			array('tipoFondo_did, responsable_did, estatus_did', 'length', 'max'=>10),

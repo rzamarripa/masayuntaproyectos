@@ -76,7 +76,7 @@
 			<?php echo $form->error($model,'peso'); ?>
 		</div>
 	</div>
-	<?php if(isset($_GET["ayuda"])){ ?>
+	<?php if(isset($_GET["ayuda"]) or $model->isNewRecord ==false){ ?>
 		<div class="form-group">
 			<?php echo $form->labelEx($model,'responsable_did',array('class'=>'control-label col-lg-2')); ?>
 			<div class="col-lg-3">

@@ -142,6 +142,7 @@
 		        <span>
 		        <!-- User image size is adjusted inside CSS, it should stay as it -->
 		        <?php $usuarioActual = Usuario::model()->obtenerUsuarioActual(); ?>
+		        <?php $ayudasPendientes = detalleProyecto::model()->count('ayuda_did=3 && responsable_did='.$usuarioActual->id); ?>
 		         <a href="<?php array("usuario/view",'id'=>$usuarioActual->id)?>" id="show-shortcut"><img alt="me"
 		        class="online" src="<?php echo Yii::app()->theme->baseUrl . '/img/avatars/male.png';?>">
 		        <span><?php echo $usuarioActual->nombre; ?></span></a></span>
@@ -156,7 +157,8 @@
 			        <li><?php echo CHtml::link('<i class="fa fa-folder-open"></i> Otros Proyectos',array('proyecto/otros')); ?></li>
 			        <li><?php echo CHtml::link('<i class="fa fa-calendar"></i> Calendario',array('evento/index')); ?></li>	
 			        <li><?php echo CHtml::link('<i class="fa fa-reorder"></i> Categorias',array('categoria/index')); ?></li>	
-			        <li><?php echo CHtml::link('<i class="fa fa-user"></i> Usuarios',array('usuario/index')); ?></li>	
+			        <li><?php echo CHtml::link('<i class="fa fa-user"></i> Usuarios',array('usuario/index')); ?></li>
+			        <li><?php echo CHtml::link('<span class="badge">'.$ayudasPendientes .'</span> Ayudas Pendientes',array('detalleProyecto/AyudasPendientes')); ?></li>	
 		        </ul>
 		       <?php } else { ?>
 			       <ul>		            

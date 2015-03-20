@@ -108,7 +108,8 @@ foreach($proyectos as $proyecto){
 												<?php $e=0; foreach($actividadesPendientes as $ap){ $e++; ?>
 												<tr>
 													<td class="text-center"><?php echo $e;?> - <?php echo CHtml::link('<i class="fa fa-comment"></i>',array('comentario/create','idActividad'=>$ap->id),array('class'=>'btn btn-success btn-sm')); ?>						</td>
-													<td><?php echo $ap->responsable->nombre; ?></td>
+													<td><?php if($ap->ayuda_did == 3){ echo $ap->responsable->nombre .'(<span class="label label-warning">Pendiente</span>)';}elseif($ap->ayuda_did == 2){echo $ap->responsable->nombre . '(<span class="label label-danger">Rechazado</span>)';}else{
+														echo $ap->responsable->nombre; }?></td>
 													<td><?php echo $ap->nombre; ?></td>
 													<td class="text-center"><?php echo $ap->peso;?></td>	
 													<td class="text-center <?php echo ($ap->estatus_did == 3) ? 'danger' : 'warning'?>"><?php echo ($ap->estatus_did == 1) ? '<span class="label label-warning">' . $ap->estatus->tipo. '</span>' :

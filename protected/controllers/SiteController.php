@@ -39,10 +39,11 @@ class SiteController extends Controller
 	public function actionIndex()
 	{		
 		$usuarioActual = Usuario::model()->find('usuario=:x',array(':x'=>Yii::app()->user->name));
+		$detalleProyectos = detalleProyecto::model()->findAll('responsable_did ='.$usuarioActual->id.'&& ayuda_did = 3');
     if(isset($usuarioActual) && $usuarioActual->tipoUsuario_did == 1){
     	$actividades = Actividad::model()->findAll(array('order'=>'id DESC'));
     	$proyectos = Proyecto::model()->findAll(array("order" => "responsable_did ASC", "condition"=>"estatus_did = 1"));
-			$this->render('administracion',array("actividades" => $actividades,'proyectos'=>$proyectos));
+			$this->render('administracion',array("actividades" => $actividades,'proyectos'=>$proyectos,'detalleProyectos' => $detalleProyectos,'usuarioActual' => $usuarioActual));
 		}	
     else if(isset($usuarioActual) && $usuarioActual->tipoUsuario_did == 2){
 			$model=new LoginForm;
@@ -72,7 +73,7 @@ class SiteController extends Controller
 			$this->render('login',array('model'=>$model));
 		} else if(isset($usuarioActual) && $usuarioActual->tipoUsuario_did != 2 || isset($usuarioActual) && $usuarioActual->tipoUsuario_did != 1){
 			$proyectos = Proyecto::model()->findAll("responsable_did = " . $usuarioActual->id);
-			$this->render('staff',array('usuarioActual' => $usuarioActual,'proyectos'=>$proyectos));
+			$this->render('staff',array('usuarioActual' => $usuarioActual,'proyectos'=>$proyectos,'detalleProyectos' => $detalleProyectos));
 		}
 	}
 
