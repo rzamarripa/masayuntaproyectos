@@ -69,7 +69,7 @@ class DetalleProyectoController extends Controller
 		{
 			$model->attributes=$_POST['DetalleProyecto'];
 			$model->proyecto_did = $_GET["id"];
-			if(!isset($_GET["ayuda"])){
+			if(!isset($_GET["Ayuda"])){
 				$model->responsable_did = $model->proyecto->responsable_did;
 			}else{
 					$model->ayuda_did = 3;
@@ -103,7 +103,7 @@ class DetalleProyectoController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		if(isset($_GET["Ayuda"])){
-			$model->ayuda_did = $_GET["Aceptar"];
+			$model->ayuda_did = $_GET["Ayuda"];
 			if($model->save()){
 				$this->redirect(array("detalleProyecto/ayudasPendientes"));
 			}

@@ -158,7 +158,7 @@
 			        <li><?php echo CHtml::link('<i class="fa fa-calendar"></i> Calendario',array('evento/index')); ?></li>	
 			        <li><?php echo CHtml::link('<i class="fa fa-reorder"></i> Categorias',array('categoria/index')); ?></li>	
 			        <li><?php echo CHtml::link('<i class="fa fa-user"></i> Usuarios',array('usuario/index')); ?></li>
-			        <li><?php echo CHtml::link('<span class="badge">'.$ayudasPendientes .'</span> Ayudas Pendientes',array('detalleProyecto/AyudasPendientes')); ?></li>	
+			        <li><?php echo CHtml::link('<i class="fa fa-folder"></i> Solicitudes <span class="badge">'.$ayudasPendientes .'</span>',array('detalleProyecto/AyudasPendientes')); ?></li>	
 		        </ul>
 		       <?php } else { ?>
 			       <ul>		            
