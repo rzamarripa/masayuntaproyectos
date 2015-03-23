@@ -30,7 +30,7 @@ class DetalleProyectoController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','view','create','update','admin','delete','cambiar'),
+				'actions'=>array('index','view','create','update','admin','delete','cambiar','ayudaspendientes'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -69,8 +69,11 @@ class DetalleProyectoController extends Controller
 		{
 			$model->attributes=$_POST['DetalleProyecto'];
 			$model->proyecto_did = $_GET["id"];
-			if(!isset($_GET["ayuda"]))
+			if(!isset($_GET["Ayuda"])){
 				$model->responsable_did = $model->proyecto->responsable_did;
+			}else{
+					$model->ayuda_did = 3;
+			}
 			if($model->save()){
 				Yii::app()->user->setFlash("info","Se agregó una actividad el proyecto: " . $model->proyecto->nombre . ".");
 				$proyecto = Proyecto::model()->find("id = " . $model->proyecto_did);
@@ -96,13 +99,21 @@ class DetalleProyectoController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$responsableActual = $model->responsable_did;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		if(isset($_GET["Ayuda"])){
+			$model->ayuda_did = $_GET["Ayuda"];
+			if($model->save()){
+				$this->redirect(array("detalleProyecto/ayudasPendientes"));
+			}
+		}
 		if(isset($_POST['DetalleProyecto']))
 		{
 			$model->attributes=$_POST['DetalleProyecto'];
+			if($responsableActual != $model->responsable_did){
+				$model->ayuda_did = 3;
+			}
 			if($model->save()){
 				if(isset($_GET["ver"]))
 					$this->redirect(array("proyecto/view",'id'=>$model->proyecto_did));
@@ -112,7 +123,7 @@ class DetalleProyectoController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model,'responsableActual'=>$responsableActual,
 		));
 	}
 
@@ -238,7 +249,6 @@ class DetalleProyectoController extends Controller
 					if($actividadesTotales == $actividadesRealizadas){
 						$proyecto = Proyecto::model()->find("id = " . $model->proyecto_did);
 						$proyecto->estatus_did = 2;
-						//print_r($proyecto);exit;
 						if($proyecto->save()){
 							Yii::app()->user->setFlash("info","Se completó el proyecto: " . $proyecto->nombre);
 							Yii::app()->db->createCommand("insert into Actividad (mensaje, usuario) Values ('Se completó el proyecto: " . $proyecto->nombre ."', '" . Yii::app()->user->name ."')")->execute();
@@ -254,5 +264,10 @@ class DetalleProyectoController extends Controller
 					$this->redirect(array("proyecto/index"));
 			}
 		}
+	}
+	
+	public function actionAyudasPendientes()
+	{
+		$this->render('AyudasPendientes');
 	}
 }

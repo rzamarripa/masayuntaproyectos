@@ -1,4 +1,4 @@
-	<div class="row">
+  <div class="row">
     <div class="col-lg-3">
       <div class="panel panel-info">
         <div class="panel-heading">
@@ -103,7 +103,8 @@
           </div>',array('proyecto/index')); ?>
       </div>
     </div>
-  </div><!-- /.row -->
+  </div>
+  
 				<!-- widget grid -->
 				<section id="widget-grid" class="">
 					<!-- row -->
@@ -196,11 +197,7 @@
 
 				</section>
 				<!-- end widget grid -->
-				
-			</div>
-			<!-- END MAIN CONTENT -->
 
-		</div>
 		<script>
 			$(document).ready(function() {
 

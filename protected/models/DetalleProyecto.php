@@ -41,14 +41,14 @@ class DetalleProyecto extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, costo, peso, estatus_did', 'required'),
+			array('nombre, responsable_did, proyecto_did, estatus_did', 'required'),
 			array('peso', 'numerical', 'integerOnly'=>true),
 			array('costo', 'numerical'),
 			array('nombre', 'length', 'max'=>100),
 			array('proyecto_did, estatus_did, responsable_did', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, nombre, fechaInicio_ft, fechaFin_ft, fechaFinalizado, descripcion, proyecto_did, peso, estatus_did, responsable_did', 'safe', 'on'=>'search'),
+			array('id, nombre, fechaInicio_ft, fechaFin_ft, fechaFinalizado, proyecto_did, peso, estatus_did, responsable_did, ayuda_did', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +63,7 @@ class DetalleProyecto extends CActiveRecord
 			'estatus' => array(self::BELONGS_TO, 'Estatus', 'estatus_did'),
 			'proyecto' => array(self::BELONGS_TO, 'Proyecto', 'proyecto_did'),
 			'responsable' => array(self::BELONGS_TO, 'Usuario', 'responsable_did'),
+			'ayuda' => array(self::BELONGS_TO, 'Ayuda', 'ayuda_did'),
 		);
 	}
 
@@ -83,6 +84,7 @@ class DetalleProyecto extends CActiveRecord
 			'descripcion' => 'Descripcion',
 			'costo' => 'Costo',
 			'fechaFinalizado' => 'Fecha Finalizado',
+			'ayuda_did' => 'Ayuda',
 		);
 	}
 
@@ -108,6 +110,7 @@ class DetalleProyecto extends CActiveRecord
 		$criteria->compare('descripcion',$this->descripcion,true);
 		$criteria->compare('costo',$this->costo);
 		$criteria->compare('fechaFinalizado',$this->fechaFinalizado,true);
+		$criteria->compare('ayuda_did',$this->ayuda_did,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

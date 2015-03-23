@@ -144,7 +144,7 @@
 	          <div class="row">
 	            <div class="col-xs-12">
 	              <p class="announcement-text"><strong>Costo de Actividades Terminadas</strong></p>
-	              <h1 style="font-size:40pt;"><strong>$<?php echo "$" . number_format($costoActTerm);?></strong></h1>
+	              <h1 style="font-size:40pt;"><strong><?php echo "$" . number_format($costoActTerm,2);?></strong></h1>
 	            </div>
 	          </div>
 	        </div>
@@ -155,7 +155,7 @@
 	          <div class="row">
 	            <div class="col-xs-12">
 	              <p class="announcement-text"><strong>Costo de Actividades Pendientes</strong></p>
-	              <h1 style="font-size:40pt;"><strong>$<?php echo "$" . number_format($costoActPen);?></strong></h1>
+	              <h1 style="font-size:40pt;"><strong><?php echo "$" . number_format($costoActPen,2);?></strong></h1>
 	            </div>
 	          </div>
 	        </div>
@@ -166,7 +166,7 @@
 	          <div class="row">
 	            <div class="col-xs-12">
 	              <p class="announcement-text"><strong>Costo del Proyecto</strong></p>
-	              <h1 style="font-size:40pt;"><strong>$<?php echo "$" . number_format($model->costo); ?></strong></h1>
+	              <h1 style="font-size:40pt;"><strong><?php echo "$" . number_format($model->costo,2); ?></strong></h1>
 	            </div>
 	          </div>
 	        </div>
