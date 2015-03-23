@@ -238,7 +238,7 @@ class DetalleProyectoController extends Controller
 					if($actividadesTotales == $actividadesRealizadas){
 						$proyecto = Proyecto::model()->find("id = " . $model->proyecto_did);
 						$proyecto->estatus_did = 2;
-						print_r($proyecto);exit;
+						//print_r($proyecto);exit;
 						if($proyecto->save()){
 							Yii::app()->user->setFlash("info","Se completó el proyecto: " . $proyecto->nombre);
 							Yii::app()->db->createCommand("insert into Actividad (mensaje, usuario) Values ('Se completó el proyecto: " . $proyecto->nombre ."', '" . Yii::app()->user->name ."')")->execute();

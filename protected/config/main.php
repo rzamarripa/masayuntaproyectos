@@ -114,7 +114,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=proyectos',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'root',
 			'enableProfiling' => true,
 			'charset' => 'utf8',
 		),

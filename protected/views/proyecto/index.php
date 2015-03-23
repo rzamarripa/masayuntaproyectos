@@ -98,7 +98,8 @@ foreach($proyectos as $proyecto){
 												<tr>
 													<th class="col-lg-1 text-center">No.</th>
 													<th class="col-lg-1">Responsable</th>
-													<th class="col-lg-6">Nombre</th>
+													<th class="col-lg-3">Nombre</th>
+													<th class="col-lg-3">Descripción</th>
 													<th class="col-lg-1 text-center">Peso</th>
 													<th class="col-lg-1 text-center">Estatus</th>
 													<th class="col-lg-2 text-center">Acciones</th>
@@ -110,6 +111,7 @@ foreach($proyectos as $proyecto){
 													<td class="text-center"><?php echo $e;?> - <?php echo CHtml::link('<i class="fa fa-comment"></i>',array('comentario/create','idActividad'=>$ap->id),array('class'=>'btn btn-success btn-sm')); ?>						</td>
 													<td><?php echo $ap->responsable->nombre; ?></td>
 													<td><?php echo $ap->nombre; ?></td>
+													<td class="text-center"><?php echo $ap->descripcion;?></td>	
 													<td class="text-center"><?php echo $ap->peso;?></td>	
 													<td class="text-center <?php echo ($ap->estatus_did == 3) ? 'danger' : 'warning'?>"><?php echo ($ap->estatus_did == 1) ? '<span class="label label-warning">' . $ap->estatus->tipo. '</span>' :
 									            							'<span class="label label-danger">' . $ap->estatus->tipo . '</span>'; ?></td>
@@ -130,7 +132,8 @@ foreach($proyectos as $proyecto){
 												<tr>
 													<th class="col-lg-1 text-center">No.</th>
 													<th class="col-lg-1">Responsable</th>
-													<th class="col-lg-6">Nombre</th>
+													<th class="col-lg-3">Nombre</th>
+													<th class="col-lg-3">Descripción</th>
 													<th class="col-lg-1 text-center">Peso</th>
 													<th class="col-lg-1 text-center">Estatus</th>
 													<th class="col-lg-3 text-center">Acciones</th>
@@ -142,6 +145,7 @@ foreach($proyectos as $proyecto){
 													<td class="text-center"><?php echo $d;?></td>
 													<td><?php echo $ar->responsable->nombre; ?></td>
 													<td><?php echo $ar->nombre; ?></td>
+													<td class="text-center"><?php echo $ar->descripcion;?></td>	
 													<td class="text-center"><?php echo $ar->peso;?></td>	
 													<td class="text-center"><?php echo ($ar->estatus_did == 1) ? '<span class="label label-warning">' . $ar->estatus->tipo. '</span>' :
 									            							'<span class="label label-success">' . $ar->estatus->tipo . '</span>'; ?></td>
@@ -161,7 +165,8 @@ foreach($proyectos as $proyecto){
 												<tr>
 													<th class="col-lg-1 text-center">No.</th>
 													<th class="col-lg-1">Responsable</th>
-													<th class="col-lg-6">Nombre</th>
+													<th class="col-lg-3">Nombre</th>
+													<th class="col-lg-3">Descripción</th>
 													<th class="col-lg-1 text-center">Peso</th>
 													<th class="col-lg-1 text-center">Estatus</th>
 													<th class="col-lg-3 text-center">Acciones</th>
@@ -173,6 +178,7 @@ foreach($proyectos as $proyecto){
 													<td class="text-center"><?php echo $f;?></td>
 													<td><?php echo $at->responsable->nombre; ?></td>
 													<td><?php echo $at->nombre; ?></td>
+													<td class="text-center"><?php echo $at->descripcion;?></td>	
 													<td class="text-center"><?php echo $at->peso;?></td>	
 													<td class="text-center"><?php echo ($at->estatus_did == 1) ? '<span class="label label-warning">' . $at->estatus->tipo. '</span>' :
 									            							'<span class="label label-success">' . $at->estatus->tipo . '</span>'; ?></td>

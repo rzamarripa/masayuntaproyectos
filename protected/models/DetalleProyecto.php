@@ -41,14 +41,14 @@ class DetalleProyecto extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, fechaInicio_ft, fechaFin_ft, descripcion, costo, peso, estatus_did', 'required'),
+			array('nombre, costo, peso, estatus_did', 'required'),
 			array('peso', 'numerical', 'integerOnly'=>true),
 			array('costo', 'numerical'),
 			array('nombre', 'length', 'max'=>100),
 			array('proyecto_did, estatus_did, responsable_did', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, nombre, fechaInicio_ft, fechaFin_ft, fechaFinalizado, proyecto_did, peso, estatus_did, responsable_did', 'safe', 'on'=>'search'),
+			array('id, nombre, fechaInicio_ft, fechaFin_ft, fechaFinalizado, descripcion, proyecto_did, peso, estatus_did, responsable_did', 'safe', 'on'=>'search'),
 		);
 	}
 
